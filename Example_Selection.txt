@@ -1,0 +1,179 @@
+"Question": "What are the countries that are not playing cartoons written by Todd Casey?",
+"PredictedSkeletons": [
+    "select _ from _ except select _ from _ join _ on _ = _ where _ = _",
+    "select _ from _ except select _ from _ join _ on _ = _ join _ on _ = _ where _ = _",
+    "select _ from _ where _ not in ( select _ from _ join _ on _ = _ where _ = _ )"
+]
+
+
+
+
+
+================================ e.g. Matching at Detail-Level for the first skeleton ================================
+"Question": 'What are the names for tracks without a race in class 'GT'.';
+"SQL":  SELECT name FROM track EXCEPT SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id WHERE T1.class  =  'GT';
+
+
+"Question": 'Give the names of tracks that do not have a race in the class 'GT'.';
+"SQL":  SELECT name FROM track EXCEPT SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id WHERE T1.class  =  'GT';
+
+
+"Question": 'Show all church names except for those that had a wedding in year 2015.';
+"SQL":  SELECT name FROM church EXCEPT SELECT T1.name FROM church AS T1 JOIN wedding AS T2 ON T1.church_id  =  T2.church_id WHERE T2.year  =  2015;
+
+
+"Question": 'Show all artist names who didn't have an exhibition in 2004.';
+"SQL":  SELECT name FROM artist EXCEPT SELECT T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.year  =  2004;
+
+
+"Question": 'What are the names of artists who did not have an exhibition in 2004?';
+"SQL":  SELECT name FROM artist EXCEPT SELECT T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.year  =  2004;
+
+
+"Question": 'Show the names of buildings except for those having an institution founded in 2003.';
+"SQL":  SELECT name FROM building EXCEPT SELECT T1.name FROM building AS T1 JOIN institution AS T2 ON T1.building_id  =  T2.building_id WHERE T2.founded  =  2003;
+
+
+"Question": 'Which events id does not have any participant with detail 'Kenyatta Kuhn'?';
+"SQL":  SELECT event_id FROM EVENTS EXCEPT SELECT T1.event_id FROM Participants_in_Events AS T1 JOIN Participants AS T2 ON T1.Participant_ID  =  T2.Participant_ID WHERE Participant_Details  =  'Kenyatta Kuhn';
+
+
+"Question": 'What are the ids of the movies that are not reviewed by Brittany Harris.';
+"SQL":  SELECT mID FROM Rating EXCEPT SELECT T1.mID FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T2.name  =  "Brittany Harris";
+
+
+"Question": 'What are the ids of all moviest hat have not been reviewed by Britanny Harris?';
+"SQL":  SELECT mID FROM Rating EXCEPT SELECT T1.mID FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T2.name  =  "Brittany Harris";
+
+
+"Question": 'Find the name of customers who do not have a loan with a type of Mortgages.';
+"SQL":  SELECT cust_name FROM customer EXCEPT SELECT T1.cust_name FROM customer AS T1 JOIN loan AS T2 ON T1.cust_id  =  T2.cust_id WHERE T2.loan_type  =  'Mortgages';
+
+
+"Question": 'What are the names of customers who have not taken a Mortage loan?';
+"SQL":  SELECT cust_name FROM customer EXCEPT SELECT T1.cust_name FROM customer AS T1 JOIN loan AS T2 ON T1.cust_id  =  T2.cust_id WHERE T2.loan_type  =  'Mortgages';
+
+
+"Question": 'Find the names of programs that are never broadcasted in the morning.';
+"SQL":  SELECT name FROM program EXCEPT SELECT t1.name FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Morning";
+
+
+"Question": 'Which programs are never broadcasted in the morning? Give me the names of the programs.';
+"SQL":  SELECT name FROM program EXCEPT SELECT t1.name FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Morning";
+
+
+"Question": 'Find the name of the person who has no student friends.';
+"SQL":  SELECT name FROM person EXCEPT SELECT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.job  =  'student';
+
+
+"Question": 'What are the names of the people who have no friends who are students?';
+"SQL":  SELECT name FROM person EXCEPT SELECT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.job  =  'student';
+
+
+"Question": 'Find the name of companies that do not make DVD drive.';
+"SQL":  SELECT name FROM manufacturers EXCEPT SELECT T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T1.name  =  'DVD drive';
+
+
+"Question": 'What are the names of companies that do not make DVD drives?';
+"SQL":  SELECT name FROM manufacturers EXCEPT SELECT T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T1.name  =  'DVD drive';
+
+
+
+
+
+
+================================ Matching at Keywords-Level for the second skeleton ================================ 
+"Question": 'What are the names for tracks without a race in class 'GT'.';
+"SQL":  SELECT name FROM track EXCEPT SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id WHERE T1.class  =  'GT';
+
+
+"Question": 'Give the names of tracks that do not have a race in the class 'GT'.';
+"SQL":  SELECT name FROM track EXCEPT SELECT T2.name FROM race AS T1 JOIN track AS T2 ON T1.track_id  =  T2.track_id WHERE T1.class  =  'GT';
+
+
+"Question": 'Show all church names except for those that had a wedding in year 2015.';
+"SQL":  SELECT name FROM church EXCEPT SELECT T1.name FROM church AS T1 JOIN wedding AS T2 ON T1.church_id  =  T2.church_id WHERE T2.year  =  2015;
+
+
+"Question": 'Show all artist names who didn't have an exhibition in 2004.';
+"SQL":  SELECT name FROM artist EXCEPT SELECT T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.year  =  2004;
+
+
+"Question": 'What are the names of artists who did not have an exhibition in 2004?';
+"SQL":  SELECT name FROM artist EXCEPT SELECT T2.name FROM exhibition AS T1 JOIN artist AS T2 ON T1.artist_id  =  T2.artist_id WHERE T1.year  =  2004;
+
+
+"Question": 'Show the names of buildings except for those having an institution founded in 2003.';
+"SQL":  SELECT name FROM building EXCEPT SELECT T1.name FROM building AS T1 JOIN institution AS T2 ON T1.building_id  =  T2.building_id WHERE T2.founded  =  2003;
+
+
+"Question": 'Which events id does not have any participant with detail 'Kenyatta Kuhn'?';
+"SQL":  SELECT event_id FROM EVENTS EXCEPT SELECT T1.event_id FROM Participants_in_Events AS T1 JOIN Participants AS T2 ON T1.Participant_ID  =  T2.Participant_ID WHERE Participant_Details  =  'Kenyatta Kuhn';
+
+
+"Question": 'What are the ids of the movies that are not reviewed by Brittany Harris.';
+"SQL":  SELECT mID FROM Rating EXCEPT SELECT T1.mID FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T2.name  =  "Brittany Harris";
+
+
+"Question": 'What are the ids of all moviest hat have not been reviewed by Britanny Harris?';
+"SQL":  SELECT mID FROM Rating EXCEPT SELECT T1.mID FROM Rating AS T1 JOIN Reviewer AS T2 ON T1.rID  =  T2.rID WHERE T2.name  =  "Brittany Harris";
+
+
+"Question": 'Find the name of customers who do not have a loan with a type of Mortgages.';
+"SQL":  SELECT cust_name FROM customer EXCEPT SELECT T1.cust_name FROM customer AS T1 JOIN loan AS T2 ON T1.cust_id  =  T2.cust_id WHERE T2.loan_type  =  'Mortgages';
+
+
+"Question": 'What are the names of customers who have not taken a Mortage loan?';
+"SQL":  SELECT cust_name FROM customer EXCEPT SELECT T1.cust_name FROM customer AS T1 JOIN loan AS T2 ON T1.cust_id  =  T2.cust_id WHERE T2.loan_type  =  'Mortgages';
+
+
+"Question": 'Find the names of programs that are never broadcasted in the morning.';
+"SQL":  SELECT name FROM program EXCEPT SELECT t1.name FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Morning";
+
+
+"Question": 'Which programs are never broadcasted in the morning? Give me the names of the programs.';
+"SQL":  SELECT name FROM program EXCEPT SELECT t1.name FROM program AS t1 JOIN broadcast AS t2 ON t1.program_id  =  t2.program_id WHERE t2.Time_of_day  =  "Morning";
+
+
+"Question": 'Find the name of the person who has no student friends.';
+"SQL":  SELECT name FROM person EXCEPT SELECT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.job  =  'student';
+
+
+"Question": 'What are the names of the people who have no friends who are students?';
+"SQL":  SELECT name FROM person EXCEPT SELECT T2.name FROM Person AS T1 JOIN PersonFriend AS T2 ON T1.name  =  T2.friend WHERE T1.job  =  'student';
+
+
+"Question": 'Find the name of companies that do not make DVD drive.';
+"SQL":  SELECT name FROM manufacturers EXCEPT SELECT T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T1.name  =  'DVD drive';
+
+
+"Question": 'What are the names of companies that do not make DVD drives?';
+"SQL":  SELECT name FROM manufacturers EXCEPT SELECT T2.name FROM products AS T1 JOIN manufacturers AS T2 ON T1.Manufacturer  =  T2.code WHERE T1.name  =  'DVD drive';
+
+
+
+
+
+================================ Matching at Structur-Level for the third skeleton ================================
+"Question": 'List the first and last name of the students who do not have any food type allergy.';
+"SQL":  SELECT fname ,  lname FROM Student WHERE StuID NOT IN (SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food");
+
+
+"Question": 'What is the full name of each student who is not allergic to any type of food.';
+"SQL":  SELECT fname ,  lname FROM Student WHERE StuID NOT IN (SELECT T1.StuID FROM Has_allergy AS T1 JOIN Allergy_Type AS T2 ON T1.Allergy  =  T2.Allergy WHERE T2.allergytype  =  "food");
+
+
+"Question": 'Find the name of students who didn't take any course from Biology department.';
+"SQL":  SELECT name FROM student WHERE id NOT IN (SELECT T1.id FROM takes AS T1 JOIN course AS T2 ON T1.course_id  =  T2.course_id WHERE T2.dept_name  =  'Biology');
+
+
+"Question": 'What are the names of students who haven't taken any Biology courses?';
+"SQL":  SELECT name FROM student WHERE id NOT IN (SELECT T1.id FROM takes AS T1 JOIN course AS T2 ON T1.course_id  =  T2.course_id WHERE T2.dept_name  =  'Biology');
+
+
+"Question": 'What are the titles and directors of the films were never presented in China?';
+"SQL":  SELECT title ,  director FROM film WHERE film_id NOT IN (SELECT film_id FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.market_id  =  T2.Market_ID WHERE country  =  'China');
+
+
+"Question": 'Return the titles and directors of films that were never in the market of China.';
+"SQL":  SELECT title ,  director FROM film WHERE film_id NOT IN (SELECT film_id FROM film_market_estimation AS T1 JOIN market AS T2 ON T1.market_id  =  T2.Market_ID WHERE country  =  'China');
